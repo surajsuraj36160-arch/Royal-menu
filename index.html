@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Royal Bites | 3D and AR Menu</title>
+<meta name="description" content="Royal Bites digital menu. See every dish in 3D and on your table in AR.">
+<meta name="theme-color" content="#0a0a09">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Google model-viewer (free): gives us the 3D viewer and the AR launcher -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<header class="nav" id="top">
+  <a class="logo" href="#top">Royal <span>Bites</span></a>
+  <nav class="links" id="links" aria-label="Main">
+    <a href="#top">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#categories">Categories</a>
+    <a href="#about">About</a>
+  </nav>
+  <button class="icon-btn" id="searchBtn" aria-label="Search dishes">🔍</button>
+  <button class="icon-btn burger" id="burgerBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+</header>
+
+<main>
+  <!-- Hero: add assets/images/hero.jpg for a food background (optional) -->
+  <section class="hero">
+    <div>
+      <h1>Royal Bites</h1>
+      <p>Fresh, fire-cooked dishes. See each one in 3D, then on your own table.</p>
+      <a class="btn gold" href="#menu">Explore Menu</a>
+    </div>
+  </section>
+
+  <!-- Only shown when the menu is bigger than 4 dishes and nothing is being searched -->
+  <section class="wrap" id="popular" hidden><h2>Popular picks</h2><div class="strip" id="popularList"></div></section>
+
+  <section class="wrap" id="menu">
+    <h2>Menu</h2>
+    <p class="notice" id="notice" role="status" hidden>Sorry, we could not find that dish. Here is our full menu.</p>
+    <div class="search">
+      <span aria-hidden="true">🔍</span>
+      <input id="search" type="search" placeholder="Search dishes" aria-label="Search dishes by name">
+      <button id="clearBtn" aria-label="Clear search" hidden>✕</button>
+    </div>
+    <div class="chips" id="categories" aria-label="Food categories"></div>
+    <div class="filters">
+      <div class="seg" id="dietChips" aria-label="Diet filter"></div>
+      <select id="sort" aria-label="Sort by price">
+        <option value="">Sort: Default</option>
+        <option value="asc">Price: Low to High</option>
+        <option value="desc">Price: High to Low</option>
+      </select>
+    </div>
+    <p class="status" id="status" role="status">Loading menu…</p>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="wrap about" id="about">
+    <h2>About Royal Bites</h2>
+    <p>Every dish is cooked fresh to order. Open a dish to see its ingredients, allergens and nutrition, then view it in 3D or on your own table before you decide.</p>
+  </section>
+</main>
+
+<footer>© Royal Bites. Nutrition values shown are demo samples.<br>3D model credit: <a href="https://sketchfab.com/3d-models/back-yard-burgers-classic-burger-6e13942ff76d4129b06e097cdd060adb" target="_blank" rel="noopener"><u>Back Yard Burgers - Classic Burger</u></a> by Ehsan Abbasi, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"><u>CC BY-SA 4.0</u></a>. Resized and optimized for web.</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top" hidden>↑</button>
+<div class="sheet" id="detail" role="dialog" aria-modal="true" aria-label="Dish details" hidden></div>
+
+</body>
+</html>
